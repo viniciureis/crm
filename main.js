@@ -12,7 +12,10 @@ let id
 function openModal(edit = false, index = 0) {
   modal.classList.add('active')
 
-
+  modal.onclick = e => {
+    if (e.target.className.indexOf('modal-container') !== -1) {
+      modal.classList.remove('active')
+    }
   }
 
   if (edit) {
@@ -27,8 +30,8 @@ function openModal(edit = false, index = 0) {
     sSalario.value = ''
     strativa.value = ''
   }
-  
 
+}
 
 function editItem(index) {
 
@@ -60,7 +63,7 @@ function insertItem(item, index) {
 }
 
 btnSalvar.onclick = e => {
-  
+
   if (sNome.value == '' || sFuncao.value == '' || sSalario.value == '' || strativa.value == '') {
     return
   }

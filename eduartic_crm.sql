@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Tempo de geração: 04-Set-2023 às 01:42
--- Versão do servidor: 10.4.22-MariaDB
--- versão do PHP: 8.1.2
+-- Host: localhost:3306
+-- Tempo de geração: 21/10/2023 às 09:37
+-- Versão do servidor: 5.7.23-23
+-- Versão do PHP: 8.1.16
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Banco de dados: `crm`
+-- Banco de dados: `eduartic_crm`
 --
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `empresas`
+-- Estrutura para tabela `empresas`
 --
 
 CREATE TABLE `empresas` (
@@ -40,13 +40,14 @@ CREATE TABLE `empresas` (
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `leads`
+-- Estrutura para tabela `leads`
 --
 
 CREATE TABLE `leads` (
   `id` int(11) NOT NULL,
   `nome` varchar(60) NOT NULL,
   `telefone` varchar(30) NOT NULL,
+  `atendente` varchar(80) NOT NULL,
   `tratativa` varchar(60) NOT NULL,
   `data_cadastro` date NOT NULL,
   `forma_ingresso` varchar(60) NOT NULL,
@@ -57,10 +58,20 @@ CREATE TABLE `leads` (
   `observacao` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Despejando dados para a tabela `leads`
+--
+
+INSERT INTO `leads` (`id`, `nome`, `telefone`, `atendente`, `tratativa`, `data_cadastro`, `forma_ingresso`, `curso`, `local_acao`, `inscrito`, `matriculado`, `observacao`) VALUES
+(1, 'vinicius', '83996275552', '', 'desistente', '2001-02-20', 'vestibular', 'acumputura', 'whats', 'sim', 'sim', ''),
+(2, 'andre', '83996275552', '', 'conversa', '2023-09-12', 'vestibular', 'medicina', 'whats', 'sim', 'sim', ''),
+(3, 'carlitos', '83996275552', '', 'desistente', '2023-09-24', 'vestibular', 'medicina', 'whats', 'sim', 'sim', ''),
+(4, 'panda', '000000000000000000000000000000', '', 'tratativa', '2023-10-17', 'vestibular', 'adm', 'festverão', 'sim', 'sim', '');
+
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `tratativas`
+-- Estrutura para tabela `tratativas`
 --
 
 CREATE TABLE `tratativas` (
@@ -70,7 +81,7 @@ CREATE TABLE `tratativas` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Extraindo dados da tabela `tratativas`
+-- Despejando dados para a tabela `tratativas`
 --
 
 INSERT INTO `tratativas` (`id`, `nome`, `descricao`) VALUES
@@ -84,7 +95,7 @@ INSERT INTO `tratativas` (`id`, `nome`, `descricao`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `usuarios`
+-- Estrutura para tabela `usuarios`
 --
 
 CREATE TABLE `usuarios` (
@@ -96,44 +107,48 @@ CREATE TABLE `usuarios` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Extraindo dados da tabela `usuarios`
+-- Despejando dados para a tabela `usuarios`
 --
 
 INSERT INTO `usuarios` (`id`, `nome`, `perfil`, `email`, `senha`) VALUES
-(1, 'Eduardo', 1, 'eduardo@teste.com', '698dc19d489c4e4db73e28a713eab07b'),
 (2, 'Vinícius', 1, 'vinicius@teste.com', '698dc19d489c4e4db73e28a713eab07b'),
-(4, 'Dodge', 1, 'dodge@teste.com', '698dc19d489c4e4db73e28a713eab07b');
+(6, 'eduardo', 1, 'eduardo@teste.com', '698dc19d489c4e4db73e28a713eab07b'),
+(7, 'vinicius reis', 1, 's.vinicius.costa19@gmail.com', 'd57f0ef6d3611e4330d881d279de4574'),
+(8, 'vinicius reis', 2, 's.vinicius.costa19@gmail.com', '698dc19d489c4e4db73e28a713eab07b'),
+(9, 'carlos', 2, 'contatosdosreis@gmail.com', '698dc19d489c4e4db73e28a713eab07b'),
+(10, 'carlistos', 2, 'alefeplribeiro@hotmail.com', '698dc19d489c4e4db73e28a713eab07b'),
+(11, 'fudeu', 2, 'fudeu.@gmail.com', '8f23bbea5463ca32fee7632786c4e413');
 
 --
 -- Índices para tabelas despejadas
 --
 
 --
--- Índices para tabela `empresas`
+-- Índices de tabela `empresas`
 --
 ALTER TABLE `empresas`
   ADD PRIMARY KEY (`id`);
 
 --
--- Índices para tabela `leads`
+-- Índices de tabela `leads`
 --
 ALTER TABLE `leads`
   ADD PRIMARY KEY (`id`);
 
 --
--- Índices para tabela `tratativas`
+-- Índices de tabela `tratativas`
 --
 ALTER TABLE `tratativas`
   ADD PRIMARY KEY (`id`);
 
 --
--- Índices para tabela `usuarios`
+-- Índices de tabela `usuarios`
 --
 ALTER TABLE `usuarios`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT de tabelas despejadas
+-- AUTO_INCREMENT para tabelas despejadas
 --
 
 --
@@ -146,7 +161,7 @@ ALTER TABLE `empresas`
 -- AUTO_INCREMENT de tabela `leads`
 --
 ALTER TABLE `leads`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de tabela `tratativas`
@@ -158,7 +173,7 @@ ALTER TABLE `tratativas`
 -- AUTO_INCREMENT de tabela `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

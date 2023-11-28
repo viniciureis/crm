@@ -1,36 +1,42 @@
 <!DOCTYPE html>
 <html lang="pt-br">
     <head>
-    <meta charset="utf-8">
+        <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>CRM</title>    
-        <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">       
+        <title>CRM</title>
+        <link rel="stylesheet" href="./css/style.css">        
     </head>
     <body>
-        <main>
-            <div style="width: 800px; margin: 10% auto; display: flex; align-items: center; justify-content: space-between; padding: 16px; border: 1px solid #000;">
-                <div style="box-sizing: border-box; background-color: #000; padding: 108px 75px; color: #fff; display: flex; align-items: center; justify-content: center; width: 50%; margin-right: 16px;">
-                    <h1>Logotipo</h1>
-                </div>
-                <div style="box-sizing: border-box; background-color: #f1f1f1; padding: 25px; width:50%;">
-                    <form method="post" action="login.php">
-                        <div style="margin: 8px 0px;">
-                            <label for="floatingEmail">E-mail</label>
-                            <input type="email" class="form-control" id="floatingEmail" name="email" placeholder="Digite o seu e-mail">  
-                        </div>
-                        <div style="margin: 8px 0px;">
-                            <label for="floatingPassword">Senha</label>
-                            <input type="password" class="form-control" id="floatingPassword" name="senha" placeholder="Digite a sua senha">
-                        </div>
-                        <div style="margin: 8px 0px;">
-                            <label><input type="checkbox" value="remember-me"> Lembrar-me</label>
-                        </div>
-                        <button style="margin: 8px 0px;" type="submit">Entrar</button>
-                    </form>
+        <main class="d-flex">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12 col-md-6 d-flex align-items-center">
+                        <img src="img/logo_crm.jpg" alt="Logotipo" width="100%">
+                    </div>
+                    <div class="col-12 col-md-5 offset-md-1 my-5">
+                        <form method="post" action="login.php" class="py-5">
+                            <div class="py-5">
+                                <h2 class="text-center text-md-start mb-3">Login</h2>
+                                <div class="form-floating mb-3">
+                                    <input type="text" id="inputUser" name="email" class="form-control" placeholder="Email">
+                                    <label for="inputUser">Email</label>
+                                </div>
+                                <div class="form-floating mb-3">
+                                    <input type="password" id="inputPassword" name="senha" class="form-control" placeholder="Senha">
+                                    <label for="inputPassword">Senha</label>
+                                </div>
+                                <div class="form-check">
+                                    <input type="checkbox" id="inputCheck" class="form-check-input">
+                                    <label for="inputCheck" class="form-check-label">Manter Conectado</label>
+                                </div>
+                                <button class="btn btn-primary col-12 my-3 p-3 fw-bold fs-5">Entrar</button>
+                                <a class="text-primary text-decoration-none" href="#">Não possuo cadastro</a>
+                            </div>
+                        </form>
+                    </div>                    
                 </div>
             </div>
-        </main>   
-        <script src="js/bootstrap.bundle.min.js"></script>
+        </main>
     </body>
 </html>

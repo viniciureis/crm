@@ -1,10 +1,10 @@
 <?php
     switch($_REQUEST["acao"]) {
-        case 'novo-usuario':
+        case 'cadastrar-usuario':
             $nome = $_POST["nome"];
             $perfil = $_POST["perfil"];
             $email = $_POST["email"];
-            $senha = $_POST["senha"];
+            $senha = md5($_POST["senha"]);
             
 
             $sql = "INSERT INTO usuarios 
@@ -14,16 +14,16 @@
             $res = $conn->query($sql);
             if($res==true) {
                 print "<script>alert('Usuário cadastrado com sucesso');</script>";
-                print "<script>location.href='?page=listar-usuario';</script>";
+                print "<script>location.href='?page=listar-usuarios';</script>";
             } else {
                 print "<script>alert('Não foi possível cadastrar');</script>";
-                print "<script>location.href='?page=listar-usuario';</script>";            }
+                print "<script>location.href='?page=listar-usuarios';</script>";            }
             break;
 
         case 'editar-usuario':
             $nome = $_POST["nome"];
             $email = $_POST["email"];
-            $senha = $_POST["senha"];
+            $senha = md5($_POST["senha"]);
             $perfil = $_POST["perfil"];
 
             $sql = "UPDATE usuarios SET nome='{$nome}', 
@@ -33,11 +33,11 @@
                                     WHERE id = " .$_REQUEST["id"];
             if($res==true) {
                 print "<script>alert('Editado com sucesso');</script>";
-                print "<script>location.href='?acao=listar-usuario'</script>";
+                print "<script>location.href='?page=listar-usuarios'</script>";
             } else {
 
                 print "<script>alert('Não foi possível editar');</script>";
-                print "<script>location.href='?acao=listar-usuario'</script>";
+                print "<script>location.href='?page=listar-usuarios'</script>";
             }
             break;
         case 'excluir-usuario':
@@ -46,11 +46,11 @@
             
             if($res==true) {
                 print "<script>alert('Excluído com sucesso');</script>";
-                print "<script>location.href='?page=listar-usuario'</script>";
+                print "<script>location.href='?page=listar-usuarios'</script>";
             } else {
 
                 print "<script>alert('Não foi possível excluir');</script>";
-                print "<script>location.href='?page=listar-usuario'</script>";
+                print "<script>location.href='?page=listar-usuarios'</script>";
             }
 
             $sql = "DELETE FROM usuarios WHERE id = " .$_REQUEST["id"];

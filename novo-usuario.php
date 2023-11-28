@@ -1,33 +1,52 @@
-<h2>Novo Usuário</h2>
-<form method="post" action="?page=salvar-usuario">
-    <input type="hidden" name="acao" value="novo-usuario">
-    <div style="display: flex; flex-direction: column;">
-        <label for="nome">Nome</label>
-        <input type="text" id="nome" name="nome" placeholder="Digite o nome">
+<div class="d-flex flex-column flex-shrink-0 p-4">                               
+    <h2 class="mb-3">Novo Usuário</h2>
+    <hr>
+    <form action="?page=salvar-usuario" method="post">
+        <input type="hidden" name="acao" value="cadastrar-usuario">
+        <div class="mb-3">
+            <label for="nome">Nome</label>
+            <input type="text" id="nome" name="nome" class="form-control">
+        </div>
+        <div class="mb-3">
+            <label for="perfil">Perfil</label>
+            <input type="text" id="perfil" name="perfil" class="form-control">
+        </div>
+        <div class="mb-3">
+            <label for="email">Email</label>
+            <input type="text" id="email" name="email" class="form-control">
+        </div>
+        <div class="mb-3">
+            <label for="senha">Senha</label>
+            <input type="password" id="senha" name="senha" class="form-control">
+        </div>                    
+        <div class="mb-3">
+            <button type="submit" class="btn btn-primary">Enviar</button>
+        </div>
+    </form>
+</div>    
+<div class="container">
+    <div class="row my-5">
+        <div class="col offset-5">
+            <div class="modal fade" id="myModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-xl">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="modalLabel">Editar Usuário</h5>
+                            <button class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>                            
+                        </div>
+                        <div class="modal-body">
+                            <?php include('editar-usuario.php'); ?>                                            
+                        </div>
+                    </div>
+                </div>                    
+            </div>
+        </div>
     </div>
-    <div style="display: flex; flex-direction: column;">
-        <label for="perfil">Perfil</label>
-        <select name="perfil" id="perfil">
-            <option value="">Selecione...</option>
-            <option value="1">1 - Administrador</option>
-            <option value="2">2 - Colaborador</option>
-        </select>
-    </div>
-    <div style="display: flex; flex-direction: column;">
-        <label for="email">Email</label>
-        <input type="text" id="email" name="email" placeholder="login@email.com.br">
-    </div>
-    <div style="display: flex; flex-direction: column;">
-        <label for="senha">Senha</label>
-        <input type="password" id="senha" name="senha" placeholder="Digite a senha">
-    </div>
-    
-    <!-- <div style="display: flex; flex-direction: column;">
-        <label for="foto">Foto</label>
-        <input type="file"> 
-    </div>-->
-    <br>
-    <div>
-        <button type="submit" class="btn btn-primary">Enviar</button>
-    </div>
-</form>
+</div>
+
+
+
+                           
+ 
+                                   
+            
